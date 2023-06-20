@@ -9,7 +9,7 @@ import AuthenticationGuard from "../components/AuthenticationGuard";
 
 const MainRoutes = () => {
   return (
-    <HashRouter basename="/" future={{ v7_startTransition: true }}>
+    <HashRouter basename="/">
       <Routes>
         <Route path="/welcome" element={<OnboardingPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
