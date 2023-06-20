@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, HashRouter, Route, Routes } from "react-router-dom";
 import App from "../App";
 import OnboardingPage from "../pages/OnboardingPage";
 import SigninPage from "../pages/auth/SigninPage";
@@ -9,7 +9,7 @@ import AuthenticationGuard from "../components/AuthenticationGuard";
 
 const MainRoutes = () => {
   return (
-    <BrowserRouter basename="/" future={{ v7_startTransition: true }}>
+    <HashRouter basename="/" future={{ v7_startTransition: true }}>
       <Routes>
         <Route path="/welcome" element={<OnboardingPage />}></Route>
         <Route path="/signin" element={<SigninPage />}></Route>
@@ -29,7 +29,7 @@ const MainRoutes = () => {
           }
         ></Route>
       </Routes>
-    </BrowserRouter>
+    </HashRouter>
   );
 };
 
