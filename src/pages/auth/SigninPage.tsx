@@ -1,9 +1,8 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { toast } from "react-toastify";
 import { getAuthorisationURLWithQueryParamsAndSetState } from "supertokens-web-js/recipe/thirdpartyemailpassword";
 
 const SigninPage = () => {
-  const navigate = useNavigate();
   async function socialSignInClicked(provider: string) {
     try {
       const authUrl = await getAuthorisationURLWithQueryParamsAndSetState({
@@ -12,7 +11,7 @@ const SigninPage = () => {
         authorisationURL: `http://localhost:5173/auth/callback/${provider}`,
       });
 
-      navigate(authUrl);
+      window.location.assign(authUrl);
     } catch (err: any) {
       console.log({ err });
     }

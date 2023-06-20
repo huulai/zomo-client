@@ -11,7 +11,9 @@ const RedirectPage = () => {
     if (dataFetchedRef.current) return;
     dataFetchedRef.current = true;
     const path = location.pathname;
-    navigate(path);
+    setTimeout(() => {
+      path === "/" ? navigate("/home") : navigate(path);
+    }, 1000);
   }, []);
 
   return (

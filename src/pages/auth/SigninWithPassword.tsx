@@ -51,7 +51,7 @@ const SigninWithPassword = () => {
         authorisationURL: `http://localhost:5173/auth/callback/${provider}`,
       });
 
-      navigate(authUrl);
+      window.location.assign(authUrl);
     } catch (err: any) {
       console.log({ err });
     }
