@@ -1,5 +1,4 @@
 import { HashRouter, Route, Routes } from "react-router-dom";
-import App from "../App";
 import OnboardingPage from "../pages/OnboardingPage";
 import SigninPage from "../pages/auth/SigninPage";
 import SignupPage from "../pages/auth/SignupPage";
@@ -7,6 +6,7 @@ import SigninWithPassword from "../pages/auth/SigninWithPassword";
 import SignInSocial from "../pages/auth/SignInSocial";
 import AuthenticationGuard from "../components/AuthenticationGuard";
 import HomePage from "../pages/HomePage";
+import RedirectPage from "../pages/RedirectPage";
 
 const MainRoutes = () => {
   return (
@@ -26,7 +26,7 @@ const MainRoutes = () => {
             </AuthenticationGuard>
           }
         />
-        <Route path="/" element={<App />} />
+        <Route path="/" element={<RedirectPage />} />
       </Routes>
     </HashRouter>
   );
