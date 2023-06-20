@@ -6,28 +6,27 @@ import SignupPage from "../pages/auth/SignupPage";
 import SigninWithPassword from "../pages/auth/SigninWithPassword";
 import SignInSocial from "../pages/auth/SignInSocial";
 import AuthenticationGuard from "../components/AuthenticationGuard";
+import HomePage from "../pages/HomePage";
 
 const MainRoutes = () => {
   return (
     <HashRouter>
       <Routes>
-        <Route path="/welcome" element={<OnboardingPage />}></Route>
-        <Route path="/signin" element={<SigninPage />}></Route>
-        <Route path="/signup" element={<SignupPage />}></Route>
+        <Route path="/welcome" element={<OnboardingPage />} />
+        <Route path="/signin" element={<SigninPage />} />
+        <Route path="/signup" element={<SignupPage />} />
+        <Route path="/signin-with-password" element={<SigninWithPassword />} />
+        <Route path="/auth/callback/google" element={<SignInSocial />} />
+        <Route path="/auth/callback/github" element={<SignInSocial />} />
         <Route
-          path="/signin-with-password"
-          element={<SigninWithPassword />}
-        ></Route>
-        <Route path="/auth/callback/google" element={<SignInSocial />}></Route>
-        <Route path="/auth/callback/github" element={<SignInSocial />}></Route>
-        <Route
-          path="/"
+          path="/home"
           element={
             <AuthenticationGuard>
-              <App />
+              <HomePage />
             </AuthenticationGuard>
           }
-        ></Route>
+        />
+        <Route path="/" element={<App />} />
       </Routes>
     </HashRouter>
   );
