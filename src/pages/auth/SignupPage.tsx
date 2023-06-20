@@ -82,7 +82,7 @@ const SignupPage = () => {
       const authUrl = await getAuthorisationURLWithQueryParamsAndSetState({
         providerId: provider,
 
-        authorisationURL: `http://localhost:5173/auth/callback/${provider}`,
+        authorisationURL: `${import.meta.env.VITE_REACT_APP_DOMAIN}/auth/callback/${provider}`,
       });
 
       window.location.assign(authUrl);
