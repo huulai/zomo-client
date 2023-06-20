@@ -1,8 +1,11 @@
 import { useEffect, useRef } from "react";
+import { useNavigate } from "react-router-dom";
 import { thirdPartySignInAndUp } from "supertokens-web-js/recipe/thirdpartyemailpassword";
 
 const SignInSocial = () => {
   const dataFetchedRef = useRef(false);
+  const navigate = useNavigate();
+
   async function handleGoogleCallback() {
     try {
       const response = await thirdPartySignInAndUp();
@@ -14,7 +17,7 @@ const SignInSocial = () => {
         } else {
           // sign in successful
         }
-        window.location.assign("/");
+        navigate("/");
       } else {
         // SuperTokens requires that the third party provider
         // gives an email for the user. If that's not the case, sign up / in
@@ -25,7 +28,7 @@ const SignInSocial = () => {
         window.alert(
           "No email provided by social login. Please use another form of login"
         );
-        window.location.assign("/auth"); // redirect back to login page
+        navigate("/auth"); // redirect back to login page
       }
     } catch (err: any) {
       if (err.isSuperTokensGeneralError === true) {

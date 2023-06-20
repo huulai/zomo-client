@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   emailPasswordSignUp,
@@ -11,6 +11,8 @@ const SignupPage = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [nickname, setNickname] = useState("");
+  const navigate = useNavigate();
+
   async function signUpClicked(
     email: string,
     password: string,
@@ -53,7 +55,7 @@ const SignupPage = () => {
       } else {
         // sign up successful. The session tokens are automatically handled by
         // the frontend SDK.
-        window.location.href = "/";
+        navigate("/home");
       }
     } catch (err: any) {
       console.log({ err });
@@ -83,7 +85,7 @@ const SignupPage = () => {
         authorisationURL: `http://localhost:5173/auth/callback/${provider}`,
       });
 
-      window.location.assign(authUrl);
+      navigate(authUrl);
     } catch (err: any) {
       console.log({ err });
     }

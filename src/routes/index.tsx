@@ -1,4 +1,4 @@
-import { HashRouter, Route, Routes } from "react-router-dom";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 import OnboardingPage from "../pages/OnboardingPage";
 import SigninPage from "../pages/auth/SigninPage";
 import SignupPage from "../pages/auth/SignupPage";
@@ -10,7 +10,7 @@ import RedirectPage from "../pages/RedirectPage";
 
 const MainRoutes = () => {
   return (
-    <HashRouter>
+    <BrowserRouter basename="/">
       <Routes>
         <Route path="/welcome" element={<OnboardingPage />} />
         <Route path="/signin" element={<SigninPage />} />
@@ -28,7 +28,7 @@ const MainRoutes = () => {
         />
         <Route path="/" element={<RedirectPage />} />
       </Routes>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

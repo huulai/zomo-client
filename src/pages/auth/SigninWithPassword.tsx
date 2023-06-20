@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-toastify";
 import {
   emailPasswordSignIn,
@@ -9,6 +9,8 @@ import {
 const SigninWithPassword = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const navigate = useNavigate();
+
   async function signInClicked(email: string, password: string) {
     try {
       const response = await emailPasswordSignIn({
@@ -34,7 +36,7 @@ const SigninWithPassword = () => {
       } else if (response.status === "WRONG_CREDENTIALS_ERROR") {
         toast.error("Email password combination is incorrect.");
       } else {
-        window.location.href = "/";
+        navigate("/home");
       }
     } catch (err: any) {
       console.log({ err });
@@ -49,7 +51,7 @@ const SigninWithPassword = () => {
         authorisationURL: `http://localhost:5173/auth/callback/${provider}`,
       });
 
-      window.location.assign(authUrl);
+      navigate(authUrl);
     } catch (err: any) {
       console.log({ err });
     }
